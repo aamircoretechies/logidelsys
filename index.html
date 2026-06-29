@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LogiAI | AI-Powered Logistics &amp; Delivery Management System</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary": "#ffffff",
+                        "secondary-container": "#b2f746",
+                        "on-primary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "on-secondary-container": "#496f00",
+                        "on-secondary-fixed-variant": "#334f00",
+                        "surface": "#f9f9ff",
+                        "tertiary-fixed": "#dbe1ff",
+                        "primary": "#facc15",
+                        "on-surface-variant": "#4d4632",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed": "#00174b",
+                        "surface-tint": "#facc15",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed-variant": "#574500",
+                        "secondary-fixed-dim": "#98da27",
+                        "surface-container-low": "#f1f3ff",
+                        "surface-container-high": "#e1e8fd",
+                        "surface-container-highest": "#dce2f7",
+                        "on-background": "#141b2b",
+                        "inverse-on-surface": "#edf0ff",
+                        "surface-dim": "#d3daef",
+                        "tertiary-fixed-dim": "#b4c5ff",
+                        "outline": "#7f7660",
+                        "secondary": "#446900",
+                        "on-primary-container": "#6c5700",
+                        "on-surface": "#141b2b",
+                        "primary-container": "#facc15",
+                        "secondary-fixed": "#b2f746",
+                        "inverse-surface": "#293040",
+                        "primary-fixed-dim": "#eec200",
+                        "surface-container-lowest": "#ffffff",
+                        "background": "#f9f9ff",
+                        "outline-variant": "#d1c6ab",
+                        "on-secondary-fixed": "#121f00",
+                        "surface-bright": "#f9f9ff",
+                        "tertiary-container": "#c2cfff",
+                        "inverse-primary": "#eec200",
+                        "surface-container": "#e9edff",
+                        "surface-variant": "#dce2f7",
+                        "tertiary": "#0053db",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-container": "#004ecf",
+                        "primary-fixed": "#ffe083",
+                        "on-primary-fixed": "#231b00",
+                        "on-tertiary-fixed-variant": "#003ea8",
+                        "error-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "max-width": "1440px",
+                        "base": "4px",
+                        "lg": "24px",
+                        "margin-desktop": "40px",
+                        "xl": "32px",
+                        "margin-mobile": "16px",
+                        "sm": "8px",
+                        "md": "16px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "display-lg-mobile": ["Manrope"],
+                        "label-sm": ["Manrope"],
+                        "headline-md": ["Manrope"],
+                        "display-lg": ["Manrope"],
+                        "body-lg": ["Manrope"],
+                        "body-md": ["Manrope"],
+                        "label-md": ["Manrope"],
+                        "headline-lg": ["Manrope"],
+                        "code-sm": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "800"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "headline-lg": ["30px", {"lineHeight": "38px", "fontWeight": "700"}],
+                        "code-sm": ["13px", {"lineHeight": "18px", "letterSpacing": "0.05em", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(229, 231, 235, 0.5);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+        }
+        .glass-card:hover {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+            border-color: #facc15;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .route-glow {
+            background: linear-gradient(90deg, #FACC15 0%, #A3E635 100%);
+            opacity: 0.1;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top Navigation -->
+<nav class="fixed top-0 w-full bg-surface/80 backdrop-blur-xl border-b border-outline-variant/30 z-50">
+<div class="flex justify-between items-center h-20 px-margin-mobile md:px-margin-desktop max-w-max-width mx-auto">
+<div class="font-headline-md text-headline-md font-extrabold text-on-surface">LogiAI</div>
+<div class="hidden md:flex items-center gap-xl">
+<a class="font-label-md text-label-md text-primary font-bold border-b-2 border-primary" href="#">Platform</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-opacity" href="#">Solutions</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-opacity" href="#">Resources</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-opacity" href="#">Pricing</a>
+</div>
+<div class="flex items-center gap-md">
+<button class="hidden sm:block font-label-md text-label-md text-on-surface-variant hover:opacity-80 transition-opacity">Log In</button>
+<button class="bg-primary-container text-on-primary-container px-md py-sm rounded-lg font-label-md text-label-md font-bold active:scale-95 transition-transform">Request Demo</button>
+</div>
+</div>
+</nav>
+<main class="pt-20">
+<!-- Hero Section -->
+<section class="relative min-h-[90vh] flex items-center overflow-hidden py-xl">
+<div class="absolute inset-0 z-0 opacity-10">
+<div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,_#FACC15_0%,_transparent_50%)]"></div>
+</div>
+<div class="relative z-10 max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop grid lg:grid-cols-2 gap-xl items-center">
+<div class="space-y-lg">
+<div class="inline-flex items-center gap-sm bg-secondary-container/20 text-secondary px-sm py-xs rounded-full">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider">Next-Gen Operations</span>
+</div>
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface leading-tight">
+                        AI-Powered <span class="text-primary">Logistics</span> &amp; Delivery Management System
+                    </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+                        The Intelligent Operations Platform for High-Volume Dispatch &amp; Real-Time Tracking. Automate your supply chain with surgical precision.
+                    </p>
+<div class="flex flex-col sm:flex-row gap-md">
+<button class="bg-primary-container text-on-primary-container px-xl py-md rounded-lg font-headline-md text-label-md font-bold flex items-center justify-center gap-sm hover:shadow-lg transition-all">
+                            Request Free Demo
+                            <span class="material-symbols-outlined">chevron_right</span>
+</button>
+<button class="border border-outline text-on-surface px-xl py-md rounded-lg font-headline-md text-label-md font-bold flex items-center justify-center gap-sm hover:bg-surface-container transition-all">
+<span class="material-symbols-outlined">play_circle</span>
+                            Watch Platform Overview
+                        </button>
+</div>
+<div class="pt-md flex items-center gap-md grayscale opacity-60">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Powering 500+ Enterprises Globally</span>
+</div>
+</div>
+<div class="relative rounded-xl overflow-hidden shadow-2xl border border-outline-variant/30">
+<img class="w-full aspect-video object-cover" data-alt="A futuristic logistics control center with massive glowing screens displaying 3D city maps, real-time GPS tracking of vehicles in bright yellow, and complex data visualization graphs. The room is sleek and high-tech with professional operators at ergonomic stations. The lighting is dominated by tech-blue and logistic yellow accents, creating a high-performance, strategic atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRA5Ptt6a3hEDGGfc9KgQIbflXgbywxNSC0cppWtGGiICid3E_T0R_LZbDee_woM8iBYcNZ9zx6s96PUqZ2e56OzZw2croE2NSGRwo-_S7lV4hyBzrxle3KmEEoRk61imxuDo2wZ8MI1xbLcHyrOO6ZtALn4yCZfFwvCkxScCL0tJSaJe-AHLvdGhzK9Setu13a8MiFhwzOyOKwuXKNep_GY3hUq88Hy3Mlgy-3kmcUj7lNYCWHk7e"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+</div>
+</div>
+</section>
+<!-- Problem Section -->
+<section class="py-xl bg-surface-container-lowest">
+<div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="text-center max-w-3xl mx-auto mb-xl">
+<h2 class="font-headline-lg text-headline-lg mb-md">Stop Managing Logistics via Spreadsheets and Paper</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Fragmented data and manual coordination are the biggest bottlenecks to scaling your delivery operations. We solve the chaos of high-volume dispatch.</p>
+</div>
+<div class="grid md:grid-cols-3 gap-lg">
+<div class="p-lg rounded-xl glass-card border-l-4 border-l-error">
+<span class="material-symbols-outlined text-error mb-sm text-[32px]">report_problem</span>
+<h3 class="font-headline-md text-headline-md mb-sm">Dispatch Inefficiencies</h3>
+<p class="text-on-surface-variant">Manual planning takes hours and leads to suboptimal routes that burn fuel and time.</p>
+</div>
+<div class="p-lg rounded-xl glass-card border-l-4 border-l-error">
+<span class="material-symbols-outlined text-error mb-sm text-[32px]">visibility_off</span>
+<h3 class="font-headline-md text-headline-md mb-sm">Zero Real-Time Visibility</h3>
+<p class="text-on-surface-variant">Customer service teams blind to driver locations, leading to increased call volumes and frustration.</p>
+</div>
+<div class="p-lg rounded-xl glass-card border-l-4 border-l-error">
+<span class="material-symbols-outlined text-error mb-sm text-[32px]">description</span>
+<h3 class="font-headline-md text-headline-md mb-sm">Paper-Based Proof</h3>
+<p class="text-on-surface-variant">Lost signatures and manual photo entry delay billing cycles and increase disputes.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Solution Section -->
+<section class="py-xl bg-surface">
+<div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="grid lg:grid-cols-2 gap-xl items-center">
+<div class="order-2 lg:order-1 relative">
+<div class="absolute -inset-4 bg-primary-container/10 rounded-full blur-3xl"></div>
+<div class="relative glass-card p-xl rounded-xl">
+<div class="flex items-center gap-md mb-lg">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined">auto_awesome</span>
+</div>
+<div>
+<h4 class="font-headline-md text-headline-md">The LogiAI Difference</h4>
+<p class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">Enterprise-Grade Intelligence</p>
+</div>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed mb-md">
+                                LogiAI is an enterprise-grade AI operations platform that automates dispatch, tracks every mile in real-time, and streamlines field team coordination for courier and supply chain leaders.
+                            </p>
+<ul class="space-y-sm">
+<li class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-secondary">check_circle</span>
+<span>Centralized cloud-native command center</span>
+</li>
+<li class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-secondary">check_circle</span>
+<span>Predictive ETA engine powered by ML</span>
+</li>
+<li class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-secondary">check_circle</span>
+<span>Seamless API integration with legacy ERPs</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="order-1 lg:order-2 space-y-md">
+<h2 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg">Built for the <br/><span class="text-secondary">Speed of Global Commerce.</span></h2>
+<div class="space-y-lg">
+<div class="flex gap-md">
+<div class="shrink-0 w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">speed</span>
+</div>
+<div>
+<p class="font-headline-md text-headline-md">20% Faster Deliveries</p>
+<p class="text-on-surface-variant">Optimize routes in seconds, not hours.</p>
+</div>
+</div>
+<div class="flex gap-md">
+<div class="shrink-0 w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">monitoring</span>
+</div>
+<div>
+<p class="font-headline-md text-headline-md">99.9% Tracking Uptime</p>
+<p class="text-on-surface-variant">Real-time GPS telemetry from any mobile device.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Features Bento Grid -->
+<section class="py-xl bg-surface-container-low">
+<div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="text-center mb-xl">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-widest">Capabilities</span>
+<h2 class="font-headline-lg text-headline-lg">Advanced Operational Intelligence</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-md h-auto md:h-[600px]">
+<div class="md:col-span-2 md:row-span-2 glass-card p-xl flex flex-col justify-between overflow-hidden relative group">
+<div class="z-10">
+<div class="w-12 h-12 bg-primary-container rounded-lg flex items-center justify-center mb-md">
+<span class="material-symbols-outlined">smart_toy</span>
+</div>
+<h3 class="font-headline-lg text-headline-lg mb-sm">AI-Driven Dispatch Automation</h3>
+<p class="text-on-surface-variant max-w-xs">Reduce manual planning effort by 90% with our proprietary heuristic engine.</p>
+<div class="mt-xl inline-flex items-center text-primary font-bold gap-xs cursor-pointer group-hover:gap-sm transition-all">
+                                Learn about AI Dispatch <span class="material-symbols-outlined">arrow_forward</span>
+</div>
+</div>
+<div class="absolute bottom-[-10%] right-[-10%] w-2/3 opacity-20 rotate-12 group-hover:rotate-0 transition-transform duration-500">
+<img class="w-full rounded-lg" data-alt="A clean, minimalist 3D rendering of a futuristic user interface showing a map of a city grid. Floating above the map are glowing yellow route lines connecting various delivery nodes. The UI is sleek, with data widgets showing dispatch progress bars and efficiency percentages in a high-tech light-mode aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzespXXLXUp6HuNvnQ9wbHNzPW7wEsJOfnTxEHRDGu81fK5tFtjGj-B7gf6Eb6iFfOjbxOj1CFfVtpAB8lV1nG5Ssar3Y5kpFdHpteuSt_Ea1OJ8fn3CIMW7yZjG-spE8EyRJiYywmjh-lBh_lBysMOm9Wodx0bJN-H8Nv63652bqSgK3mbnBgQHKBHWQx7wkud-2OjJLwRUdtlVjtyV0JkML70IIfBib8gydsypVlNYqEKje-UvoL"/>
+</div>
+</div>
+<div class="md:col-span-2 glass-card p-xl relative overflow-hidden group">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-headline-md text-headline-md mb-sm">Real-Time Fleet Visibility</h3>
+<p class="text-on-surface-variant">Live GPS tracking and ML-based delay prediction for entire fleets.</p>
+</div>
+<div class="w-10 h-10 bg-secondary-container/20 text-secondary rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined">my_location</span>
+</div>
+</div>
+<!-- Sparkline placeholder -->
+<div class="mt-lg flex items-end gap-1 h-12">
+<div class="w-full h-[20%] bg-secondary/20 rounded-t-sm"></div>
+<div class="w-full h-[40%] bg-secondary/20 rounded-t-sm"></div>
+<div class="w-full h-[35%] bg-secondary/20 rounded-t-sm"></div>
+<div class="w-full h-[70%] bg-secondary rounded-t-sm"></div>
+<div class="w-full h-[60%] bg-secondary rounded-t-sm"></div>
+<div class="w-full h-[90%] bg-secondary rounded-t-sm"></div>
+</div>
+</div>
+<div class="glass-card p-lg flex flex-col justify-between">
+<span class="material-symbols-outlined text-primary text-[32px]">draw</span>
+<h3 class="font-headline-md text-label-md mt-md">Digital Proof of Delivery</h3>
+<p class="text-label-sm text-on-surface-variant mt-xs">Instant signatures and photo verification.</p>
+</div>
+<div class="glass-card p-lg flex flex-col justify-between">
+<span class="material-symbols-outlined text-primary text-[32px]">insights</span>
+<h3 class="font-headline-md text-label-md mt-md">Operations Intelligence</h3>
+<p class="text-label-sm text-on-surface-variant mt-xs">Performance analytics for every driver.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- How It Works -->
+<section class="py-xl bg-surface overflow-hidden">
+<div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop">
+<h2 class="font-headline-lg text-headline-lg text-center mb-xl">Operational Deployment in 3 Steps</h2>
+<div class="relative">
+<!-- Connector line for desktop -->
+<div class="hidden md:block absolute top-1/2 left-0 w-full h-[2px] bg-outline-variant/30 -translate-y-1/2 z-0"></div>
+<div class="grid md:grid-cols-3 gap-xl relative z-10">
+<div class="flex flex-col items-center text-center">
+<div class="w-16 h-16 rounded-full bg-primary-container border-4 border-white flex items-center justify-center font-headline-md text-on-primary-container mb-md shadow-md">1</div>
+<h3 class="font-headline-md text-headline-md mb-sm">Connect Fleet &amp; Data</h3>
+<p class="text-on-surface-variant">Sync your existing ERP or vehicle telematics via our enterprise API.</p>
+</div>
+<div class="flex flex-col items-center text-center">
+<div class="w-16 h-16 rounded-full bg-primary-container border-4 border-white flex items-center justify-center font-headline-md text-on-primary-container mb-md shadow-md">2</div>
+<h3 class="font-headline-md text-headline-md mb-sm">AI Automates Dispatch</h3>
+<p class="text-on-surface-variant">Our engine calculates the most efficient route clusters instantly.</p>
+</div>
+<div class="flex flex-col items-center text-center">
+<div class="w-16 h-16 rounded-full bg-primary-container border-4 border-white flex items-center justify-center font-headline-md text-on-primary-container mb-md shadow-md">3</div>
+<h3 class="font-headline-md text-headline-md mb-sm">Track &amp; Deliver</h3>
+<p class="text-on-surface-variant">Monitor live status and gain 100% visibility into field operations.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- FAQ Section -->
+<section class="py-xl bg-surface-container-highest/30">
+<div class="max-w-3xl mx-auto px-margin-mobile">
+<h2 class="font-headline-lg text-headline-lg text-center mb-xl">Frequently Asked Questions</h2>
+<div class="space-y-md">
+<details class="group bg-white p-md rounded-xl border border-outline-variant transition-all cursor-pointer open:ring-1 open:ring-primary">
+<summary class="flex justify-between items-center font-headline-md text-on-surface list-none">
+                            How does the AI dispatch engine handle traffic delays?
+                            <span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<p class="mt-md text-on-surface-variant">LogiAI integrates real-time traffic data feeds and historical transit patterns to dynamically adjust routes. If a delay is detected, the system automatically recalibrates ETAs and notifies stakeholders.</p>
+</details>
+<details class="group bg-white p-md rounded-xl border border-outline-variant transition-all cursor-pointer open:ring-1 open:ring-primary">
+<summary class="flex justify-between items-center font-headline-md text-on-surface list-none">
+                            Can we integrate LogiAI with our current ERP/CRM?
+                            <span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<p class="mt-md text-on-surface-variant">Yes. We provide a robust REST API and pre-built connectors for major platforms like SAP, Oracle, and Salesforce, ensuring a seamless data flow between systems.</p>
+</details>
+<details class="group bg-white p-md rounded-xl border border-outline-variant transition-all cursor-pointer open:ring-1 open:ring-primary">
+<summary class="flex justify-between items-center font-headline-md text-on-surface list-none">
+                            Is our operational data secure?
+                            <span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<p class="mt-md text-on-surface-variant">Security is our priority. LogiAI is SOC2 Type II compliant and utilizes AES-256 encryption for data at rest and TLS 1.3 for data in transit.</p>
+</details>
+<details class="group bg-white p-md rounded-xl border border-outline-variant transition-all cursor-pointer open:ring-1 open:ring-primary">
+<summary class="flex justify-between items-center font-headline-md text-on-surface list-none">
+                            What is the typical ROI for an enterprise client?
+                            <span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<p class="mt-md text-on-surface-variant">Most clients see a 15-25% reduction in fuel costs and a 40% increase in dispatcher productivity within the first 6 months of full deployment.</p>
+</details>
+</div>
+</div>
+</section>
+<!-- Final CTA -->
+<section class="py-xl">
+<div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="bg-inverse-surface rounded-3xl p-xl md:p-[80px] text-center relative overflow-hidden">
+<div class="absolute inset-0 opacity-10">
+<div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_10%_20%,_#FACC15_0%,_transparent_20%)]"></div>
+<div class="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(circle_at_90%_80%,_#A3E635_0%,_transparent_20%)]"></div>
+</div>
+<div class="relative z-10">
+<h2 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-white mb-lg">Ready to scale your <br/>logistics operations?</h2>
+<p class="font-body-lg text-body-lg text-surface-variant max-w-xl mx-auto mb-xl">Join the elite logistics providers using LogiAI to eliminate operational friction and maximize profitability.</p>
+<button class="bg-primary-container text-on-primary-container px-[48px] py-[20px] rounded-lg font-headline-md text-headline-md hover:scale-105 active:scale-95 transition-all shadow-xl">
+                            Get Started Now
+                        </button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t border-outline-variant/50 pt-xl">
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-lg px-margin-mobile md:px-margin-desktop max-w-max-width mx-auto pb-xl">
+<div class="col-span-2">
+<div class="font-headline-md text-headline-md text-primary font-extrabold mb-md">LogiAI</div>
+<p class="text-on-surface-variant font-body-md pr-xl">Empowering the world's most complex logistics networks with intelligent, real-time operational software.</p>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface mb-md">Product</h4>
+<ul class="space-y-sm text-on-surface-variant font-body-md">
+<li><a class="hover:text-primary transition-colors" href="#">Features</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">API Docs</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Integrations</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Status</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface mb-md">Resources</h4>
+<ul class="space-y-sm text-on-surface-variant font-body-md">
+<li><a class="hover:text-primary transition-colors" href="#">Case Studies</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Help Center</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Security</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Pricing</a></li>
+</ul>
+</div>
+<div class="col-span-2 md:col-span-1">
+<h4 class="font-label-md text-label-md text-on-surface mb-md">Legal</h4>
+<ul class="space-y-sm text-on-surface-variant font-body-md">
+<li><a class="hover:text-primary transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Terms of Service</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Cookie Policy</a></li>
+</ul>
+</div>
+</div>
+<div class="border-t border-outline-variant/30 py-md">
+<div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-md">
+<p class="text-on-surface-variant font-body-md text-sm">© 2026 Core Techies™. All rights reserved.</p>
+<div class="flex gap-lg">
+<a class="text-on-surface-variant hover:text-primary" href="#"><span class="material-symbols-outlined text-[20px]">language</span></a>
+<a class="text-on-surface-variant hover:text-primary" href="#"><span class="material-symbols-outlined text-[20px]">share</span></a>
+</div>
+</div>
+</div>
+</footer>
+<script>
+        // Simple scroll reveal effect for cards
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.glass-card').forEach(el => {
+            el.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-10');
+            observer.observe(el);
+        });
+    </script>
+</body></html>
